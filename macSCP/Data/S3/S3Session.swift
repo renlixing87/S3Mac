@@ -41,7 +41,12 @@ actor S3Session: S3SessionProtocol {
             let awsRegion = Region(rawValue: region)
 
             client = AWSClient(
-                credentialProvider: .static(accessKeyId: accessKeyId, secretAccessKey: secretAccessKey)
+                credentialProvider: .static(accessKeyId: accessKeyId, secretAccessKey: secretAccessKey),
+                // Some S3-compatible endpoints return malformed compressed payloads. S3
+                // control responses are small, so request identity encoding for compatibility.
+                middleware: AWSEditHeadersMiddleware(
+                    .replace(name: "Accept-Encoding", value: "identity")
+                )
             )
 
             if let endpoint = endpoint, !endpoint.isEmpty {
