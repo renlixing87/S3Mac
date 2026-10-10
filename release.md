@@ -2,7 +2,7 @@
 
 ## ✨ New Features
 
-- **🔐 Touch ID & Biometric Authentication** - Protect your sessions with Touch ID. Lock macSCP on launch, when switching apps, before each connection, or after a configurable inactivity timeout (1 min to 1 hour). All windows are blurred and gated behind authentication when locked.
+- **🔐 Touch ID & Biometric Authentication** - Protect your sessions with Touch ID. Lock S3Mac on launch, when switching apps, before each connection, or after a configurable inactivity timeout (1 min to 1 hour). All windows are blurred and gated behind authentication when locked.
 - **⚙️ Settings Window** - A new Settings window (Cmd+,) gives you a central place to configure security preferences including all Touch ID lock options.
 
 ## 🚀 Improvements
@@ -24,7 +24,7 @@
 
 ## ✨ New Features
 
-- **🔄 Automatic Updates** - macSCP now checks for updates automatically in the background and notifies you when a new version is available. You can also manually check via "Check for Updates..." in the macSCP menu.
+- **🔄 Automatic Updates** - S3Mac now checks for updates automatically in the background and notifies you when a new version is available. You can also manually check via "Check for Updates..." in the S3Mac menu.
 
 ## 🐛 Bug Fixes
 

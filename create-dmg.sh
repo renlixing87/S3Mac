@@ -1,31 +1,31 @@
 #!/bin/bash
 
-# macSCP DMG Creator Script
-# This script creates a distributable DMG installer for macSCP
+# S3Mac DMG Creator Script
+# This script creates a distributable DMG installer for S3Mac
 
 set -e
 
-APP_NAME="macSCP"
+APP_NAME="S3Mac"
 VERSION="0.2.3"
 DMG_NAME="${APP_NAME}-${VERSION}"
 BUILD_DIR="build"
 DMG_DIR="dmg-staging"
 FINAL_DMG="${DMG_NAME}.dmg"
 
-echo "🚀 Building macSCP..."
+echo "🚀 Building S3Mac..."
 
 # Archive the app (Release build)
 xcodebuild archive \
-    -project macSCP.xcodeproj \
-    -scheme macSCP \
+    -project S3Mac.xcodeproj \
+    -scheme S3Mac \
     -configuration Release \
     -archivePath "${BUILD_DIR}/${APP_NAME}.xcarchive" \
     CODE_SIGN_IDENTITY="-" \
     CODE_SIGN_STYLE=Manual \
     DEVELOPMENT_TEAM="" \
     | xcpretty || xcodebuild archive \
-    -project macSCP.xcodeproj \
-    -scheme macSCP \
+    -project S3Mac.xcodeproj \
+    -scheme S3Mac \
     -configuration Release \
     -archivePath "${BUILD_DIR}/${APP_NAME}.xcarchive" \
     CODE_SIGN_IDENTITY="-" \
@@ -68,7 +68,7 @@ echo "📦 Size: $(du -h "${FINAL_DMG}" | cut -f1)"
 # EdDSA signing for Sparkle updates
 echo ""
 echo "🔐 Signing DMG for Sparkle updates..."
-SIGN_UPDATE=$(find ~/Library/Developer/Xcode/DerivedData/macSCP-*/SourcePackages/artifacts/sparkle/Sparkle/bin -name sign_update 2>/dev/null | head -1)
+SIGN_UPDATE=$(find ~/Library/Developer/Xcode/DerivedData/S3Mac-*/SourcePackages/artifacts/sparkle/Sparkle/bin -name sign_update 2>/dev/null | head -1)
 
 if [ -n "${SIGN_UPDATE}" ]; then
     SIGNATURE_OUTPUT=$("${SIGN_UPDATE}" "${FINAL_DMG}")
@@ -81,7 +81,7 @@ if [ -n "${SIGN_UPDATE}" ]; then
     echo "length=\"${DMG_LENGTH}\""
 else
     echo "⚠️  sign_update not found in DerivedData. Build the project in Xcode first to resolve Sparkle SPM package."
-    echo "   Then run: find ~/Library/Developer/Xcode/DerivedData/macSCP-*/SourcePackages/artifacts/sparkle/Sparkle/bin -name sign_update"
+    echo "   Then run: find ~/Library/Developer/Xcode/DerivedData/S3Mac-*/SourcePackages/artifacts/sparkle/Sparkle/bin -name sign_update"
 fi
 
 echo ""

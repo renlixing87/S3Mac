@@ -1,34 +1,11 @@
-<br/>
-
-> [!IMPORTANT]
-> ## macSCP has evolved into [AnySCP](https://github.com/macnev2013/anySCP) 🎉
->
-> macSCP is no longer actively maintained. After hitting limitations with macOS-only support, OS-specific bugs, and the difficulty of maintaining a SwiftUI-only codebase, I rebuilt the app from scratch as **[AnySCP](https://github.com/macnev2013/anySCP)** — a cross-platform desktop client that runs on **macOS, Windows, and Linux**.
->
-> AnySCP includes everything macSCP offered and much more:
-> - **Cross-platform** — runs natively on macOS, Windows, and Linux
-> - **Split terminal panes** — horizontal and vertical splits within SSH sessions
-> - **SSH port forwarding** — local and remote tunnels with service presets
-> - **Command snippets** — save and organize frequently used commands with parameterized templates
-> - **Drag-and-drop uploads** — drop files directly into the remote file browser or S3 bucket
-> - **Concurrent transfers** — parallel file transfers with real-time progress, speed, and ETA
-> - **VS Code integration** — edit remote files in VS Code with automatic re-upload on save
-> - **Privacy-first** — credentials stored in your OS keychain, fully offline, no account required
->
-> **👉 [Download AnySCP](https://github.com/macnev2013/anySCP/releases)**
->
-> Thank you to everyone who used and supported macSCP!
-
-<br/>
-
 <p align="center">
-  <img src="screens/logo.png" alt="macSCP Logo" width="200"/>
+  <img src="S3Mac/Assets.xcassets/AppIcon.appiconset/S3Mac-iOS-Default-1024x1024@1x.png" alt="S3Mac Logo" width="200"/>
 </p>
 
-<h1 align="center">macSCP</h1>
+<h1 align="center">S3Mac</h1>
 
 <p align="center">
-  <strong>⚠️ Deprecated — see <a href="https://github.com/macnev2013/anySCP">AnySCP</a> for the actively maintained successor</strong>
+  <strong>A native macOS client for SFTP, S3-compatible storage, and SSH terminals.</strong>
 </p>
 
 <p align="center">
@@ -41,17 +18,17 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/macnev2013/macSCP/releases"><img src="https://img.shields.io/github/v/release/macnev2013/macSCP" alt="Release"/></a>
-  <a href="https://github.com/macnev2013/macSCP/releases"><img src="https://img.shields.io/github/downloads/macnev2013/macSCP/total" alt="Downloads"/></a>
+  <a href="https://github.com/renlixing87/S3Mac/releases"><img src="https://img.shields.io/github/v/release/renlixing87/S3Mac" alt="Release"/></a>
+  <a href="https://github.com/renlixing87/S3Mac/releases"><img src="https://img.shields.io/github/downloads/renlixing87/S3Mac/total" alt="Downloads"/></a>
   <img src="https://img.shields.io/badge/macOS-15.0%2B-blue?logo=apple" alt="macOS 15.0+"/>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0--1.0-green" alt="License CC0"/></a>
-  <a href="https://github.com/macnev2013/macSCP/stargazers"><img src="https://img.shields.io/github/stars/macnev2013/macSCP?style=social" alt="Stars"/></a>
+  <a href="https://github.com/renlixing87/S3Mac/stargazers"><img src="https://img.shields.io/github/stars/renlixing87/S3Mac?style=social" alt="Stars"/></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="screens/screen-1.png" alt="macSCP Connection Manager" width="800"/>
+  <img src="screens/screen-1.png" alt="S3Mac Connection Manager" width="800"/>
 </p>
 <p align="center"><em>Manage SFTP servers, S3 buckets, and SSH terminals from one native macOS app.</em></p>
 
@@ -59,11 +36,11 @@
 
 ## Overview
 
-macSCP is a modern, native macOS application built with SwiftUI that provides seamless file management for SFTP servers, Amazon S3 storage, and integrated SSH terminal access. With its intuitive interface and powerful features, macSCP makes managing remote servers and cloud storage as easy as working with local files.
+S3Mac is a modern, native macOS application built with SwiftUI that provides seamless file management for SFTP servers, Amazon S3 storage, and integrated SSH terminal access. With its intuitive interface and powerful features, S3Mac makes managing remote servers and cloud storage as easy as working with local files.
 
-## How macSCP Compares
+## How S3Mac Compares
 
-| Feature | macSCP | Cyberduck | Transmit | FileZilla |
+| Feature | S3Mac | Cyberduck | Transmit | FileZilla |
 |---------|--------|-----------|----------|-----------|
 | Native SwiftUI | Yes | No (Java) | Yes (AppKit) | No (wxWidgets) |
 | SFTP | Yes | Yes | Yes | Yes |
@@ -161,10 +138,10 @@ macSCP is a modern, native macOS application built with SwiftUI that provides se
 ## Installation
 
 ### Download
-1. Download the latest release from the [Releases](https://github.com/macnev2013/macSCP/releases) page
+1. Download the latest release from the [Releases](https://github.com/renlixing87/S3Mac/releases) page
 2. Open the `.dmg` file
-3. Drag macSCP to your Applications folder
-4. Launch macSCP from Applications
+3. Drag S3Mac to your Applications folder
+4. Launch S3Mac from Applications
 
 ### Requirements
 - macOS 15.0 (Sequoia) or later
@@ -181,7 +158,7 @@ macSCP is a modern, native macOS application built with SwiftUI that provides se
 
 ### Dependencies
 
-macSCP uses Swift Package Manager for dependency management. Required packages:
+S3Mac uses Swift Package Manager for dependency management. Required packages:
 - [Citadel](https://github.com/Orlandos-nl/Citadel) - SSH/SFTP implementation
 - [Soto](https://github.com/soto-project/soto) - AWS SDK for Swift (S3 support)
 - [SwiftNIO](https://github.com/apple/swift-nio) - High-performance networking
@@ -191,13 +168,13 @@ macSCP uses Swift Package Manager for dependency management. Required packages:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/macnev2013/macSCP.git
-   cd macSCP
+   git clone https://github.com/renlixing87/S3Mac.git
+   cd S3Mac
    ```
 
 2. Open the project in Xcode:
    ```bash
-   open macSCP.xcodeproj
+   open S3Mac.xcodeproj
    ```
 
 3. Wait for Swift Package Manager to resolve dependencies
@@ -226,7 +203,7 @@ This will:
 
 ## Architecture
 
-macSCP is built with modern Swift and SwiftUI patterns:
+S3Mac is built with modern Swift and SwiftUI patterns:
 
 - **SwiftUI**: Entire UI built with declarative SwiftUI
 - **SwiftData**: Model persistence and data management
@@ -274,7 +251,7 @@ Contributions are welcome! Here's how you can help:
 
 ## Security
 
-macSCP takes security seriously:
+S3Mac takes security seriously:
 
 - Passwords and AWS credentials are stored securely in macOS Keychain
 - SSH keys are never copied or stored
@@ -329,6 +306,8 @@ This project is licensed under CC0 1.0 Universal - see the [LICENSE](LICENSE) fi
 
 ## Acknowledgments
 
+- Based on [macnev2013/macSCP](https://github.com/macnev2013/macSCP), distributed under CC0 1.0 Universal.
+
 - Built with [Citadel](https://github.com/Orlandos-nl/Citadel) by Joannis Orlandos
 - S3 support powered by [Soto](https://github.com/soto-project/soto)
 - Terminal emulation powered by [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) by Miguel de Icaza
@@ -338,13 +317,13 @@ This project is licensed under CC0 1.0 Universal - see the [LICENSE](LICENSE) fi
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/macnev2013/macSCP/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/macnev2013/macSCP/discussions)
+- **Issues**: [GitHub Issues](https://github.com/renlixing87/S3Mac/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/renlixing87/S3Mac/discussions)
 
 ---
 
 <p align="center">
-  If you find macSCP useful, please consider giving it a <a href="https://github.com/macnev2013/macSCP">star on GitHub</a>!
+  If you find S3Mac useful, please consider giving it a <a href="https://github.com/renlixing87/S3Mac">star on GitHub</a>!
 </p>
 
 <p align="center">
