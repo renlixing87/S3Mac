@@ -4,6 +4,10 @@ S3Mac is a native macOS app for managing SFTP connections, S3-compatible storage
 
 > S3Mac is an independent project derived from [macSCP](https://github.com/macnev2013/macSCP). It is not the original macSCP app. The upstream project is distributed under CC0 1.0 Universal; see [LICENSE](LICENSE).
 
+## Screenshot
+
+![S3Mac connection details](screens/s3mac-connection-details.png)
+
 ## Features
 
 - Save SFTP and S3 connection profiles, organize them in folders, and search connections.
