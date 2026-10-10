@@ -655,6 +655,18 @@ actor S3Session: S3SessionProtocol {
     }
 
     private func parseConnectionError(_ error: Error) -> AppError {
+        if let rawError = error as? AWSRawError {
+            let statusCode = rawError.context.responseCode.code
+            switch statusCode {
+            case 403:
+                return .s3AccessDenied
+            case 404:
+                return .s3BucketNotFound
+            default:
+                return .connectionFailed("S3 endpoint returned HTTP \(statusCode).")
+            }
+        }
+
         let description = error.localizedDescription.lowercased()
 
         if description.contains("invalid access key") || description.contains("signature") {
