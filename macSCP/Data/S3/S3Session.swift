@@ -56,15 +56,13 @@ actor S3Session: S3SessionProtocol {
                 s3 = S3(client: client!, region: awsRegion)
             }
 
-            // Verify connection by checking if bucket exists
-            let headBucketRequest = S3.HeadBucketRequest(bucket: bucket)
-            _ = try await s3!.headBucket(headBucketRequest)
-
+            // Bucket-scoped R2 object tokens can list objects without bucket-level
+            // HeadBucket access. Validate the token with ListObjectsV2 when loading files.
             bucketName = bucket
             currentPath = "/"
             isConnected = true
 
-            log("Connected successfully to S3 bucket: \(bucket)")
+            log("Initialized S3 session for bucket: \(bucket)")
         } catch let error as S3ErrorType {
             try await cleanup()
             throw parseS3Error(error)
@@ -104,7 +102,12 @@ actor S3Session: S3SessionProtocol {
             prefix: prefix.isEmpty ? nil : prefix
         )
 
-        let response = try await s3.listObjectsV2(request)
+        let response: S3.ListObjectsV2Output
+        do {
+            response = try await s3.listObjectsV2(request)
+        } catch {
+            throw parseS3Error(error)
+        }
 
         var files: [RemoteFile] = []
 
@@ -683,6 +686,20 @@ actor S3Session: S3SessionProtocol {
     }
 
     private func parseS3Error(_ error: Error) -> AppError {
+        if let rawError = error as? AWSRawError {
+            let statusCode = rawError.context.responseCode.code
+            switch statusCode {
+            case 401:
+                return .invalidS3Credentials
+            case 403:
+                return .s3AccessDenied
+            case 404:
+                return .s3BucketNotFound
+            default:
+                return .s3OperationFailed("HTTP \(statusCode)")
+            }
+        }
+
         let description = String(describing: error).lowercased()
 
         if description.contains("nosuchbucket") || (description.contains("bucket") && description.contains("not found")) {
