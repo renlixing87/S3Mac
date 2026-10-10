@@ -40,7 +40,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-														
+
 		4721B2912F2C013B00279B18 /* S3MacUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = S3MacUITests;
